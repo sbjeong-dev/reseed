@@ -1,0 +1,314 @@
+@charset "UTF-8";
+/* -------------------------------------------------- VARIABLES -------------------------------------------------- */
+/* line height */
+/* gradation */
+/* color */
+/* fontsize */
+/*
+  * ========================================================
+  * Responsive Utilities with clamp() - SCSS Mixins
+  * 기준: 1rem = 10px (html { font-size: 62.5% })
+  * ========================================================
+
+  * 기본값 커스터마이징 가능
+  */
+/*
+  * 공통 clamp mixin (단위: rem + vw)
+  */
+/*
+  * --------------------------------------------------------
+  * 속성별 반응형 mixin
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 브레이크포인트 유틸
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 속성 작성 예시
+  * --------------------------------------------------------
+
+  .title {
+    @include fluid-font-size(16, 24);
+    @include fluid-line-height(22, 32);
+    @include fluid-margin(10, 30);
+  }
+
+  .card {
+    @include fluid-padding(20, 60);
+    @include fluid-radius(8, 20);
+    @include fluid-gap(12, 40);
+  }
+
+  .footer {
+  display: flex;
+  padding: 0;
+  @include fluid-padding(16, 32);
+
+  ✅ 레이아웃 변경 (mobile에서 column으로)
+  @include media(mobile) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ✅ 내부 요소 크기 반응형
+  .youtube {
+    @include fluid-width(32, 48);
+    @include fluid-height(32, 48);
+  }
+}
+
+
+  */
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+}
+@media (max-width: 768px) {
+  .web {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .mob {
+    display: block !important;
+  }
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+}
+.container .title {
+  padding: 152px 176px 72px;
+}
+.container .title p,
+.container .title span {
+  color: #171717;
+  -webkit-transition: font-size 0.4s, line-height 0.4s;
+  transition: font-size 0.4s, line-height 0.4s;
+}
+.container .title p {
+  line-height: 8rem;
+  font-size: 6.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.container .title span {
+  display: block;
+  line-height: 4.8rem;
+  font-size: 2.8rem;
+  font-family: var(--font-noto-sans);
+  font-weight: 300;
+}
+.container .content {
+  padding: 0 176px 192px;
+}
+.container .content .more {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  position: relative;
+  left: 50%;
+  margin-top: 9.6rem;
+  -webkit-transition: margin-top 0.4s;
+  transition: margin-top 0.4s;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.container .content .more span {
+  position: relative;
+  display: inline-block;
+  color: #171717;
+  font-size: 1.8rem;
+  font-family: var(--font-noto-sans);
+  font-weight: 400;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+}
+.container .content .more span::before {
+  content: "";
+  position: absolute;
+  bottom: -0.2rem;
+  left: 0;
+  right: 0;
+  height: 0.1rem;
+  background-color: #171717;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+.container .content .more:hover span::before {
+  opacity: 1;
+}
+@media (max-width: 768px) {
+  .container .title {
+    padding: 6.4rem 0.8rem 2.4rem;
+  }
+  .container .title p {
+    line-height: 4rem;
+    font-size: 3.2rem;
+  }
+  .container .title span {
+    line-height: 2.4rem;
+    font-size: 1.4rem;
+  }
+  .container .content {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .container .content .more {
+    margin-top: 5.2rem;
+  }
+  .container .content .more span {
+    line-height: 2.4rem;
+    color: #757575;
+    font-size: 1.4rem;
+  }
+  .container .content .more span::before {
+    background-color: #757575;
+  }
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+.visual {
+  margin-top: 0 !important;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.portfolio .content {
+  padding: 0;
+}
+
+.ourlife {
+  padding: 0;
+}
+.ourlife__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.ourlife__item {
+  position: relative;
+  width: 44.8rem;
+  height: 56rem;
+}
+.ourlife__item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.4)), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.ourlife__item .item__box {
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4.8rem 3.2rem;
+}
+.ourlife__item .item__box span {
+  display: block;
+  color: #ffffff;
+  -webkit-transition: font-size 0.4s, line-height 0.4s;
+  transition: font-size 0.4s, line-height 0.4s;
+}
+.ourlife__item .item__box span.item__tit {
+  padding: 0;
+  line-height: 3.2rem;
+  font-size: 2.4rem;
+  font-family: var(--font-noto-sans);
+  font-weight: 700;
+}
+.ourlife__item .item__box span.item__date {
+  margin-top: 1.2rem;
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+  font-family: var(--font-alexandria);
+  font-weight: 500;
+}
+.ourlife__item .item__box span.item__date em {
+  position: relative;
+  display: inline-block;
+  padding-right: 7.2rem;
+  font-style: normal;
+}
+.ourlife__item .item__box span.item__date em::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 4.8rem;
+  height: 1.2rem;
+  background-image: url(../../public/images/main/ourlife_arrow.png);
+  background-size: 100%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  opacity: 0;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+.ourlife__item:hover .item__box span em::after {
+  opacity: 1;
+}
+@media (max-width: 768px) {
+  .ourlife .content {
+    padding: 0 0.4rem 9.6rem;
+  }
+  .ourlife__list {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .ourlife__item {
+    margin: 0.8rem 0.4rem;
+    width: calc(50% - 0.8rem);
+    height: 21rem;
+  }
+  .ourlife__item::after {
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.6)), to(rgba(255, 255, 255, 0)));
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+  .ourlife__item .item__box {
+    padding: 1.2rem 0.8rem;
+  }
+  .ourlife__item .item__box span.item__tit {
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
+  .ourlife__item .item__box span.item__date {
+    margin-top: 0.4rem;
+    line-height: 1.6rem;
+    font-size: 0.8rem;
+  }
+  .ourlife__item .item__box span.item__date em {
+    padding-right: 3.6rem;
+  }
+  .ourlife__item .item__box span.item__date em::after {
+    width: 2.4rem;
+    height: 0.6rem;
+  }
+}

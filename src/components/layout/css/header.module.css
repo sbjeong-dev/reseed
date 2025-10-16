@@ -1,0 +1,333 @@
+@charset "UTF-8";
+/* -------------------------------------------------- VARIABLES -------------------------------------------------- */
+/* line height */
+/* gradation */
+/* color */
+/* fontsize */
+/*
+  * ========================================================
+  * Responsive Utilities with clamp() - SCSS Mixins
+  * 기준: 1rem = 10px (html { font-size: 62.5% })
+  * ========================================================
+
+  * 기본값 커스터마이징 가능
+  */
+/*
+  * 공통 clamp mixin (단위: rem + vw)
+  */
+/*
+  * --------------------------------------------------------
+  * 속성별 반응형 mixin
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 브레이크포인트 유틸
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 속성 작성 예시
+  * --------------------------------------------------------
+
+  .title {
+    @include fluid-font-size(16, 24);
+    @include fluid-line-height(22, 32);
+    @include fluid-margin(10, 30);
+  }
+
+  .card {
+    @include fluid-padding(20, 60);
+    @include fluid-radius(8, 20);
+    @include fluid-gap(12, 40);
+  }
+
+  .footer {
+  display: flex;
+  padding: 0;
+  @include fluid-padding(16, 32);
+
+  ✅ 레이아웃 변경 (mobile에서 column으로)
+  @include media(mobile) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ✅ 내부 요소 크기 반응형
+  .youtube {
+    @include fluid-width(32, 48);
+    @include fluid-height(32, 48);
+  }
+}
+
+
+  */
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+}
+@media (max-width: 768px) {
+  .web {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .mob {
+    display: block !important;
+  }
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+.header {
+  overflow-x: hidden;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: transparent;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+}
+.header.is-scrolled {
+  background-color: #ffffff;
+}
+.header__area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2.8rem 1.6rem;
+}
+.header__area .logo {
+  z-index: 12;
+  position: relative;
+  width: 7.2rem;
+  text-indent: -9999px;
+  background: url(../../../../public/images/logo_en.png) no-repeat center/100%;
+}
+.header__area .gnb__menu {
+  z-index: 12;
+  position: relative;
+  width: 2.4rem;
+  height: 2.4rem;
+  text-indent: -9999px;
+  background: url(../../../../public/icons/gnb_menu.png) no-repeat center/100%;
+}
+.header__area .gnb__menu.is_open {
+  background: url(../../../../public/icons/gnb_close.png) no-repeat center/100%;
+}
+.header__area .gnb__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header__area .gnb__list a {
+  margin: 0 2.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.header__area .gnb__list a span {
+  position: relative;
+  padding-bottom: 0.4rem;
+  color: #171717;
+}
+.header__area .gnb__list a span::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.1rem;
+  background-color: #464646;
+}
+.header__area .gnb__list a:hover span::before {
+  content: "";
+}
+.header__area .gnb__list a.request {
+  margin-right: 0;
+}
+.header__area .gnb__list a.request span {
+  padding-right: 2rem;
+}
+.header__area .gnb__list a.request span::before {
+  content: none;
+}
+.header__area .gnb__list a.request span::after {
+  content: "";
+  position: absolute;
+  top: -0.6rem;
+  left: auto;
+  right: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: url(../../../../public/icons/gnb_request.png) no-repeat center/100%;
+  -webkit-transition: background 0.4s;
+  transition: background 0.4s;
+}
+.header__area .gnb__list a.request:hover span::after {
+  background: url(../../../../public/icons/gnb_request_hover.png) no-repeat center/100%;
+}
+.header__area .gnb__list.is_open {
+  z-index: 8;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 6.4rem;
+  padding: 0 0.8rem;
+  background-color: #ffffff;
+}
+.header__area .gnb__list.is_open a {
+  margin: 0.8rem 0;
+  min-height: 4.8rem;
+}
+.header__area .gnb__list.is_open a span {
+  padding: 0;
+  line-height: 4.8rem;
+  font-size: 4rem;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+}
+.header__area .gnb__list.is_open a span::before {
+  content: none;
+}
+.header__area .gnb__list.is_open a:hover span {
+  line-height: 4rem;
+  font-size: 4.8rem;
+  color: #bcbcbc;
+  font-family: var(--font-anek-latin);
+  text-transform: lowercase;
+}
+.header__area .gnb__list.is_open a.request span {
+  padding-right: 3.2rem;
+}
+.header__area .gnb__list.is_open a.request span::after {
+  top: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  background-image: url(../../../../public/icons/mob/gnb_request.png);
+}
+.header__area .gnb__list.is_open a.request:hover span::after {
+  background-image: url(../../../../public/icons/mob/gnb_request_hover.png);
+}
+.header__area .gnb__info {
+  z-index: 8;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.4rem 0.8rem;
+}
+.header__area .gnb__info p,
+.header__area .gnb__info a {
+  line-height: 1.6rem;
+  font-size: 0.8rem;
+  font-family: var(--font-alexandria), var(--font-noto-sans);
+  text-align: left;
+}
+.header__area .gnb__info .mail {
+  text-transform: uppercase;
+}
+.header__area .gnb__info .youtube {
+  display: block;
+  position: absolute;
+  bottom: 2.4rem;
+  right: 0.8rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  text-indent: -9999px;
+  background-image: url(../../../../public/icons/mob/footer_youtube.png);
+  background-size: 100%;
+  -webkit-transition: background-image 0.4s;
+  transition: background-image 0.4s;
+}
+.header__area .gnb__info .youtube:hover {
+  background-image: url(../../../../public/icons/mob/footer_youtube_hover.png);
+}
+.header__area .gnb__info .util {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header__area .gnb__info .util .mail {
+  position: relative;
+  margin-right: 0.8rem;
+  padding-right: 0.8rem;
+}
+.header__area .gnb__info .util .mail::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 0.1rem;
+  height: 0.8rem;
+  background-color: #171717;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.header__area .gnb__info .util .policy {
+  display: block;
+  position: relative;
+  margin-left: 0.8rem;
+  padding-left: 0.8rem;
+  font-weight: 700;
+}
+.header__area .gnb__info .util .policy::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.1rem;
+  height: 0.8rem;
+  background-color: #171717;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+@media (max-width: 768px) {
+  .header__area {
+    padding: 0.4rem 0.8rem;
+    padding-right: 1.6rem;
+  }
+}

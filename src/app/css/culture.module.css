@@ -1,0 +1,313 @@
+@charset "UTF-8";
+/* -------------------------------------------------- VARIABLES -------------------------------------------------- */
+/* line height */
+/* color */
+/* fontsize */
+/* gradation */
+/*
+  * ========================================================
+  * Responsive Utilities with clamp() - SCSS Mixins
+  * 기준: 1rem = 10px (html { font-size: 62.5% })
+  * ========================================================
+
+  * 기본값 커스터마이징 가능
+  */
+/*
+  * 공통 clamp mixin (단위: rem + vw)
+  */
+/*
+  * --------------------------------------------------------
+  * 속성별 반응형 mixin
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 브레이크포인트 유틸
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 속성 작성 예시
+  * --------------------------------------------------------
+
+  .title {
+    @include fluid-font-size(16, 24);
+    @include fluid-line-height(22, 32);
+    @include fluid-margin(10, 30);
+  }
+
+  .card {
+    @include fluid-padding(20, 60);
+    @include fluid-radius(8, 20);
+    @include fluid-gap(12, 40);
+  }
+
+  .footer {
+  display: flex;
+  padding: 0;
+  @include fluid-padding(16, 32);
+
+  ✅ 레이아웃 변경 (mobile에서 column으로)
+  @include media(mobile) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ✅ 내부 요소 크기 반응형
+  .youtube {
+    @include fluid-width(32, 48);
+    @include fluid-height(32, 48);
+  }
+}
+
+
+  */
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+}
+@media (max-width: 768px) {
+  .web {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .mob {
+    display: block !important;
+  }
+}
+
+/* CLASS */
+.inner {
+  padding-left: 17.6rem;
+  padding-right: 17.6rem;
+}
+
+.container {
+  position: relative;
+  padding-top: 32rem;
+}
+.container .contents {
+  position: relative;
+  padding-bottom: 19.2rem;
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+/* visual */
+.visual__title {
+  padding: 0 17.6rem;
+  line-height: 8rem;
+  color: #171717;
+  font-size: 6.4rem;
+  font-weight: 500;
+  font-family: var(--font-anek-latin);
+}
+.visual__image {
+  position: relative;
+  margin-top: 3.2rem;
+  height: 51.2rem;
+}
+
+/* culture */
+.culture {
+  margin-top: 4.8rem;
+}
+.culture__summary .large {
+  line-height: 8rem;
+  color: #d0d0d0;
+  font-size: 6.4rem;
+  font-family: var(--font-alexandria);
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+.culture__summary .large span {
+  color: #171717;
+}
+.culture__summary .small {
+  margin-top: 4.8rem;
+  line-height: 4.8rem;
+  font-size: 2.8rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+.culture__together {
+  margin-top: 18.4rem;
+}
+.culture__together > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 6.4rem;
+}
+.culture__together > div p {
+  width: 50%;
+  line-height: 4.8rem;
+  letter-spacing: -0.02em;
+}
+.culture__together > div p.together {
+  font-size: 4rem;
+  font-family: var(--font-anek-latin);
+  font-weight: 600;
+}
+.culture__together > div p.text {
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+.culture__together > div p span {
+  display: block;
+  margin-top: 1.6rem;
+  line-height: 3.2rem;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+/* benefit */
+.benefit {
+  margin-top: 18.4rem;
+  padding: 10.4rem 0 17.6rem;
+  background-color: #f5f5f5;
+}
+.benefit .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.benefit .inner > div {
+  width: 50%;
+}
+.benefit__title {
+  line-height: 8rem;
+  font-size: 6.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.benefit__text {
+  line-height: 4.8rem;
+  font-size: 3.2rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.benefit__list {
+  margin-top: 2.8rem;
+  padding: 0 3.2rem 2.8rem;
+  background-color: #ffffff;
+}
+.benefit__list li {
+  position: relative;
+  padding: 1.6rem 0;
+}
+.benefit__list li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 0.1rem;
+  background-color: #171717;
+  -webkit-transition: width 0.8s;
+  transition: width 0.8s;
+}
+.benefit__list li .title {
+  position: relative;
+  padding-left: 4rem;
+  width: 100%;
+  line-height: 4.8rem;
+  font-size: 3.2rem;
+  font-family: var(--font-alexandria);
+  text-align: left;
+  background-color: transparent;
+  cursor: pointer;
+}
+.benefit__list li .title span {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  line-height: 3.2rem;
+  color: #ffffff;
+  font-size: 2rem;
+  text-align: center;
+  background-color: #171717;
+  border-radius: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.benefit__list li .title::before, .benefit__list li .title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  background-color: #171717;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+  transition: transform 0.6s, -webkit-transform 0.6s;
+}
+.benefit__list li .title::before {
+  right: 0;
+  width: 2.4rem;
+  height: 0.2rem;
+}
+.benefit__list li .title::after {
+  right: 1rem;
+  width: 0.2rem;
+  height: 2.4rem;
+}
+.benefit__list li .content {
+  overflow: hidden;
+  padding-left: 4rem;
+  max-height: 0;
+  opacity: 0;
+  -webkit-transition: max-height 0.6s, opacity 0.6s;
+  transition: max-height 0.6s, opacity 0.6s;
+}
+.benefit__list li .content p {
+  margin: 0.8rem 0;
+  line-height: 3.2rem;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+.benefit__list li .content p:first-child {
+  margin: 0 0 2rem;
+  line-height: 4.8rem;
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+.benefit__list li .content p span {
+  font-weight: 500;
+}
+.benefit__list li.is_opened::after {
+  width: 100%;
+}
+.benefit__list li.is_opened .title::after {
+  -webkit-transform: translateY(-50%) rotate(90deg);
+          transform: translateY(-50%) rotate(90deg);
+}
+.benefit__list li.is_opened .content {
+  max-height: 30.8rem;
+  opacity: 1;
+}
+
+/* ourlife */
+.ourlife {
+  margin-top: 9.6rem;
+}

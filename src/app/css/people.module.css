@@ -1,0 +1,267 @@
+@charset "UTF-8";
+/* -------------------------------------------------- VARIABLES -------------------------------------------------- */
+/* line height */
+/* color */
+/* fontsize */
+/* gradation */
+/*
+  * ========================================================
+  * Responsive Utilities with clamp() - SCSS Mixins
+  * 기준: 1rem = 10px (html { font-size: 62.5% })
+  * ========================================================
+
+  * 기본값 커스터마이징 가능
+  */
+/*
+  * 공통 clamp mixin (단위: rem + vw)
+  */
+/*
+  * --------------------------------------------------------
+  * 속성별 반응형 mixin
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 브레이크포인트 유틸
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 속성 작성 예시
+  * --------------------------------------------------------
+
+  .title {
+    @include fluid-font-size(16, 24);
+    @include fluid-line-height(22, 32);
+    @include fluid-margin(10, 30);
+  }
+
+  .card {
+    @include fluid-padding(20, 60);
+    @include fluid-radius(8, 20);
+    @include fluid-gap(12, 40);
+  }
+
+  .footer {
+  display: flex;
+  padding: 0;
+  @include fluid-padding(16, 32);
+
+  ✅ 레이아웃 변경 (mobile에서 column으로)
+  @include media(mobile) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ✅ 내부 요소 크기 반응형
+  .youtube {
+    @include fluid-width(32, 48);
+    @include fluid-height(32, 48);
+  }
+}
+
+
+  */
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+}
+@media (max-width: 768px) {
+  .web {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .mob {
+    display: block !important;
+  }
+}
+
+/* CLASS */
+.inner {
+  padding-left: 17.6rem;
+  padding-right: 17.6rem;
+}
+
+.container {
+  position: relative;
+  padding-top: 32rem;
+}
+.container .contents {
+  position: relative;
+  padding-bottom: 19.2rem;
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+/* visual */
+.visual {
+  position: relative;
+}
+.visual__title {
+  padding: 0 17.6rem;
+  line-height: 8rem;
+  color: #171717;
+  font-size: 6.4rem;
+  font-weight: 500;
+  font-family: var(--font-anek-latin);
+}
+.visual__image {
+  position: relative;
+  margin-top: 3.2rem;
+  height: 51.2rem;
+}
+
+/* description */
+.description {
+  margin-top: 4.8rem;
+}
+.description .summary .large {
+  line-height: 8rem;
+  font-size: 6.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.048em;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+}
+.description .summary .small {
+  margin-top: 3.6rem;
+  line-height: 4.8rem;
+  font-size: 2.8rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  -webkit-transition-duration: 1.2s;
+          transition-duration: 1.2s;
+}
+.description .services {
+  margin-top: 13.2rem;
+}
+.description .services > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 7.2rem;
+}
+.description .services > div p {
+  width: 50%;
+  line-height: 4.8rem;
+  letter-spacing: -0.02em;
+}
+.description .services > div p.service {
+  font-size: 4rem;
+  font-family: var(--font-anek-latin);
+  font-weight: 600;
+}
+.description .services > div p.text {
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+.description .services > div p span {
+  display: block;
+  margin-top: 1.6rem;
+  line-height: 3.2rem;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+/* jobs */
+.jobs {
+  margin-top: 7.2rem;
+}
+.jobs_sort {
+  color: #ffffff;
+  background-color: #171717;
+}
+.jobs_sort .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-left: 10.6rem;
+  padding-right: 10.6rem;
+}
+.jobs_sort .inner a {
+  display: block;
+  line-height: 4.8rem;
+  font-size: 4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.jobs_list {
+  margin-top: 4.8rem;
+}
+.jobs_list table,
+.jobs_list tbody,
+.jobs_list tr,
+.jobs_list td {
+  border: 0;
+}
+.jobs_list table tr {
+  border-bottom: 1px solid #e8e8e8;
+}
+.jobs_list table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.jobs_list table tr:last-child {
+  border-color: #171717;
+}
+.jobs_list table td {
+  padding: 0.8rem;
+  height: 8rem;
+}
+.jobs_list table td p {
+  line-height: 2.4rem;
+  font-size: 1.8rem;
+}
+.jobs_list table td .sort {
+  font-family: var(--font-anek-latin), var(--font-noto-sans);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.jobs_list table td .title {
+  font-weight: 300;
+}
+.jobs_list table td .type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.jobs_list table td .type p {
+  margin-left: 0.4rem;
+  width: 6.4rem;
+  line-height: 3.2rem;
+  color: #171717;
+  font-size: 1.4rem;
+  font-weight: 300;
+  text-align: center;
+  background-color: #f3f3f3;
+  border-radius: 2rem;
+}

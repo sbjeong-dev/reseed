@@ -1,0 +1,144 @@
+/*
+  * ========================================================
+  * Responsive Utilities with clamp() - SCSS Mixins
+  * 기준: 1rem = 10px (html { font-size: 62.5% })
+  * ========================================================
+
+  * 기본값 커스터마이징 가능
+  */
+$base-rem: 10 !default; // 1rem = 10px
+$max-screen: 1920 !default; // 데스크탑 최대 해상도
+
+/*
+  * 공통 clamp mixin (단위: rem + vw)
+  */
+@mixin clamp-style($property, $min-px, $max-px, $max-screen: $max-screen) {
+  $min-rem: $min-px / $base-rem;
+  $max-rem: $max-px / $base-rem;
+  $preferred-vw: (($min-px + $max-px) / 2) / $max-screen * 100;
+
+  #{$property}: clamp(#{$min-rem}rem, #{$preferred-vw}vw, #{$max-rem}rem);
+}
+
+/*
+  * --------------------------------------------------------
+  * 속성별 반응형 mixin
+  * --------------------------------------------------------
+  */
+@mixin fluid-margin($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(margin, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-margin-top($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(margin-top, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-margin-bottom($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(margin-bottom, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-margin-left($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(margin-left, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-margin-right($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(margin-right, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-padding($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(padding, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-padding-top($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(padding-top, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-padding-bottom($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(padding-bottom, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-padding-left($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(padding-left, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-padding-right($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(padding-right, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-width($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(width, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-height($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(height, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-line-height($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(line-height, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-font-size($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(font-size, $min-px, $max-px, $max-screen);
+}
+
+@mixin fluid-radius($min-px, $max-px, $max-screen: $max-screen) {
+  @include clamp-style(border-radius, $min-px, $max-px, $max-screen);
+}
+
+/*
+  * --------------------------------------------------------
+  * 브레이크포인트 유틸
+  * --------------------------------------------------------
+  */
+$breakpoints: (
+  mobile: 768px,
+  tablet: 1024px,
+  desktop: 1440px,
+);
+
+@mixin media($point) {
+  $value: map-get($breakpoints, $point);
+  @if $value {
+    @media (max-width: $value) {
+      @content;
+    }
+  }
+}
+
+/*
+  * --------------------------------------------------------
+  * 속성 작성 예시
+  * --------------------------------------------------------
+
+  .title {
+    @include fluid-font-size(16, 24);
+    @include fluid-line-height(22, 32);
+    @include fluid-margin(10, 30);
+  }
+
+  .card {
+    @include fluid-padding(20, 60);
+    @include fluid-radius(8, 20);
+    @include fluid-gap(12, 40);
+  }
+
+  .footer {
+  display: flex;
+  padding: 0;
+  @include fluid-padding(16, 32);
+
+  ✅ 레이아웃 변경 (mobile에서 column으로)
+  @include media(mobile) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ✅ 내부 요소 크기 반응형
+  .youtube {
+    @include fluid-width(32, 48);
+    @include fluid-height(32, 48);
+  }
+}
+
+
+  */

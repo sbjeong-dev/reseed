@@ -1,0 +1,151 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/responsive" as *;
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+
+  @include media(mobile) {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+
+  @include media(mobile) {
+    display: block !important;
+  }
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+.ourlife__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .item {
+    position: relative;
+    width: 44.8rem;
+    height: 56rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: $gradient1;
+    }
+
+    .box {
+      z-index: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 4.8rem 3.2rem;
+
+      span {
+        display: block;
+        color: $colorFF;
+        transition: font-size 0.4s, line-height 0.4s;
+
+        &.title {
+          padding: 0;
+          line-height: $lineHeight32;
+          font-size: $fontSize24;
+          font-family: var(--font-noto-sans);
+          font-weight: 700;
+        }
+
+        &.date {
+          margin-top: 1.2rem;
+          line-height: $lineHeight24;
+          font-size: $fontSize16;
+          font-family: var(--font-alexandria);
+          font-weight: 500;
+
+          em {
+            position: relative;
+            display: inline-block;
+            padding-right: 7.2rem;
+            font-style: normal;
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: 0;
+              width: 4.8rem;
+              height: 1.2rem;
+              background-image: url(../../../../public/images/main/ourlife_arrow.png);
+              background-size: 100%;
+              transform: translateY(-50%);
+              opacity: 0;
+              transition: opacity 0.4s;
+            }
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .box {
+        span {
+          em {
+            &::after {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include media(mobile) {
+    flex-wrap: wrap;
+
+    .item {
+      margin: 0.8rem 0.4rem;
+      width: calc(50% - 0.8rem);
+      height: 21rem;
+
+      &::after {
+        background: $gradient2;
+      }
+
+      .box {
+        padding: 1.2rem 0.8rem;
+
+        span {
+          &.title {
+            line-height: $lineHeight20;
+            font-size: $fontSize12;
+          }
+
+          &.date {
+            margin-top: 0.4rem;
+            line-height: $lineHeight16;
+            font-size: $fontSize8;
+
+            em {
+              padding-right: 3.6rem;
+
+              &::after {
+                width: 2.4rem;
+                height: 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

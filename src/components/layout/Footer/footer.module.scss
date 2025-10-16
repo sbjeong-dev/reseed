@@ -1,0 +1,132 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/responsive" as *;
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+
+  @include media(mobile) {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+
+  @include media(mobile) {
+    display: block !important;
+  }
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+.footer {
+  padding: 5.6rem 17.6rem;
+  background-color: $colorF3;
+  transition: padding 0.4s;
+
+  @include media(mobile) {
+    padding: 2.4rem 0.8rem;
+  }
+
+  &__area {
+    position: relative;
+
+    p,
+    a {
+      line-height: $lineHeight32;
+      font-size: $fontSize14;
+      font-weight: 300;
+      transition: font-size 0.4s;
+
+      @include media(mobile) {
+        line-height: $lineHeight16;
+        font-size: $fontSize8;
+      }
+    }
+
+    .copy {
+      line-height: $lineHeight48;
+      font-size: $fontSize16;
+      font-family: var(--font-alexandria);
+      font-weight: 500;
+
+      @include media(mobile) {
+        line-height: $lineHeight24;
+        font-size: $fontSize8;
+      }
+    }
+
+    .util {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+
+      p {
+        font-family: var(--font-alexandria);
+      }
+
+      .mail {
+        position: relative;
+        margin-right: 0.8rem;
+        padding-right: 0.8rem;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 0;
+          width: 0.1rem;
+          height: 0.8rem;
+          background-color: $color00;
+          transform: translateY(-50%);
+        }
+      }
+
+      .policy {
+        display: block;
+        position: relative;
+        margin-left: 0.8rem;
+        padding-left: 0.8rem;
+        font-weight: 600;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 0.1rem;
+          height: 0.8rem;
+          background-color: $color00;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    .mail {
+      text-transform: uppercase;
+    }
+
+    .youtube {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      @include fluid-width(32, 48);
+      @include fluid-height(32, 48);
+      text-indent: -9999px;
+      background-image: url(../../../../public/icons/footer_youtube.png);
+      background-size: 100%;
+      transition: background-image 0.4s;
+
+      &:hover {
+        background-image: url(../../../../public/icons/footer_youtube_hover.png);
+      }
+    }
+  }
+}

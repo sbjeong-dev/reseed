@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/* -------------------------------------------------- VARIABLES -------------------------------------------------- */
+/* line height */
+/* color */
+/* fontsize */
+/* gradation */
+/*
+  * ========================================================
+  * Responsive Utilities with clamp() - SCSS Mixins
+  * 기준: 1rem = 10px (html { font-size: 62.5% })
+  * ========================================================
+
+  * 기본값 커스터마이징 가능
+  */
+/*
+  * 공통 clamp mixin (단위: rem + vw)
+  */
+/*
+  * --------------------------------------------------------
+  * 속성별 반응형 mixin
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 브레이크포인트 유틸
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 속성 작성 예시
+  * --------------------------------------------------------
+
+  .title {
+    @include fluid-font-size(16, 24);
+    @include fluid-line-height(22, 32);
+    @include fluid-margin(10, 30);
+  }
+
+  .card {
+    @include fluid-padding(20, 60);
+    @include fluid-radius(8, 20);
+    @include fluid-gap(12, 40);
+  }
+
+  .footer {
+  display: flex;
+  padding: 0;
+  @include fluid-padding(16, 32);
+
+  ✅ 레이아웃 변경 (mobile에서 column으로)
+  @include media(mobile) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ✅ 내부 요소 크기 반응형
+  .youtube {
+    @include fluid-width(32, 48);
+    @include fluid-height(32, 48);
+  }
+}
+
+
+  */
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- FLOATING TEXT -------------------------------------------------- */
+.floating_txt {
+  z-index: 1000;
+  position: fixed;
+  left: 1.6rem;
+  bottom: 1.6rem;
+  pointer-events: none;
+}
+.floating_txt p {
+  line-height: 3.2rem;
+  font-size: 2.8rem;
+  font-weight: 300;
+  font-family: var(--font-anek-latin);
+  opacity: 0;
+  -webkit-transform: translateY(20px);
+          transform: translateY(20px);
+  -webkit-transition: position 0.6s ease, opacity 0.6s ease, -webkit-transform 0.6s ease;
+  transition: position 0.6s ease, opacity 0.6s ease, -webkit-transform 0.6s ease;
+  transition: position 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
+  transition: position 0.6s ease, opacity 0.6s ease, transform 0.6s ease, -webkit-transform 0.6s ease;
+}
+.floating_txt p span {
+  font-weight: 700;
+}
+
+.floating_txt.show p,
+:global(.show) p {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.floating_txt.stop,
+:global(.stop) {
+  position: absolute;
+}
+.floating_txt.stop p,
+:global(.stop) p {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}

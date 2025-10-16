@@ -1,0 +1,213 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/responsive" as *;
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+
+  @include media(mobile) {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+
+  @include media(mobile) {
+    display: block !important;
+  }
+}
+
+/* CLASS */
+.inner {
+  padding-left: 17.6rem;
+  padding-right: 17.6rem;
+}
+
+.container {
+  position: relative;
+  padding-top: 32rem;
+
+  .contents {
+    position: relative;
+    padding-bottom: 19.2rem;
+  }
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+/* visual */
+.visual {
+  position: relative;
+
+  &__title {
+    padding: 0 17.6rem;
+    line-height: $lineHeight80;
+    color: $color17;
+    font-size: $fontSize64;
+    font-weight: 500;
+    font-family: var(--font-anek-latin);
+  }
+
+  &__image {
+    position: relative;
+    margin-top: 3.2rem;
+    height: 51.2rem;
+  }
+}
+
+/* description */
+.description {
+  margin-top: 4.8rem;
+
+  .summary {
+    .large {
+      line-height: $lineHeight80;
+      font-size: $fontSize64;
+      font-family: var(--font-alexandria);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: -0.048em;
+      transition-duration: 0.6s;
+    }
+
+    .small {
+      margin-top: 3.6rem;
+      line-height: $lineHeight48;
+      font-size: $fontSize28;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      transition-duration: 1.2s;
+    }
+  }
+
+  .services {
+    margin-top: 13.2rem;
+
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 7.2rem;
+
+      p {
+        width: 50%;
+        line-height: $lineHeight48;
+        letter-spacing: -0.02em;
+
+        &.service {
+          font-size: $fontSize40;
+          font-family: var(--font-anek-latin);
+          font-weight: 600;
+        }
+
+        &.text {
+          font-size: $fontSize32;
+          font-weight: 500;
+        }
+
+        span {
+          display: block;
+          margin-top: 1.6rem;
+          line-height: $lineHeight32;
+          font-size: $fontSize20;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+}
+
+/* jobs */
+.jobs {
+  margin-top: 7.2rem;
+
+  &_sort {
+    color: $colorFF;
+    background-color: $color17;
+
+    .inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-left: 10.6rem;
+      padding-right: 10.6rem;
+
+      a {
+        display: block;
+        line-height: $lineHeight48;
+        font-size: $fontSize40;
+        font-family: var(--font-alexandria);
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &_list {
+    margin-top: 4.8rem;
+
+    table,
+    tbody,
+    tr,
+    td {
+      border: 0;
+    }
+
+    table {
+      tr {
+        border-bottom: 1px solid $colorE8;
+
+        &:nth-child(even) {
+          background-color: $colorF9;
+        }
+
+        &:last-child {
+          border-color: $color17;
+        }
+      }
+
+      td {
+        padding: 0.8rem;
+        height: 8rem;
+
+        p {
+          line-height: $lineHeight24;
+          font-size: $fontSize18;
+        }
+
+        .sort {
+          font-family: var(--font-anek-latin), var(--font-noto-sans);
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+
+        .title {
+          font-weight: 300;
+        }
+
+        .type {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+
+          p {
+            margin-left: 0.4rem;
+            width: 6.4rem;
+            line-height: $lineHeight32;
+            color: $color17;
+            font-size: $fontSize14;
+            font-weight: 300;
+            text-align: center;
+            background-color: $colorF3;
+            border-radius: 2rem;
+          }
+        }
+      }
+    }
+  }
+}

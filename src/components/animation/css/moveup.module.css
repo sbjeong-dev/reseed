@@ -1,0 +1,19 @@
+/* -------------------------------------------------- MOVE UP -------------------------------------------------- */
+.move_up {
+  opacity: 0;
+  -webkit-transform: translateY(8rem);
+          transform: translateY(8rem);
+  -webkit-transition: opacity 0.6s ease-out, -webkit-transform 0.6s ease-in-out;
+  transition: opacity 0.6s ease-out, -webkit-transform 0.6s ease-in-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-in-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+
+.move_up.is_up,
+:global(.is_up) {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition-duration: 1.2s;
+          transition-duration: 1.2s;
+}

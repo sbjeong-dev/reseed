@@ -1,0 +1,168 @@
+@charset "UTF-8";
+/* -------------------------------------------------- VARIABLES -------------------------------------------------- */
+/* line height */
+/* color */
+/* fontsize */
+/* gradation */
+/*
+  * ========================================================
+  * Responsive Utilities with clamp() - SCSS Mixins
+  * 기준: 1rem = 10px (html { font-size: 62.5% })
+  * ========================================================
+
+  * 기본값 커스터마이징 가능
+  */
+/*
+  * 공통 clamp mixin (단위: rem + vw)
+  */
+/*
+  * --------------------------------------------------------
+  * 속성별 반응형 mixin
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 브레이크포인트 유틸
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 속성 작성 예시
+  * --------------------------------------------------------
+
+  .title {
+    @include fluid-font-size(16, 24);
+    @include fluid-line-height(22, 32);
+    @include fluid-margin(10, 30);
+  }
+
+  .card {
+    @include fluid-padding(20, 60);
+    @include fluid-radius(8, 20);
+    @include fluid-gap(12, 40);
+  }
+
+  .footer {
+  display: flex;
+  padding: 0;
+  @include fluid-padding(16, 32);
+
+  ✅ 레이아웃 변경 (mobile에서 column으로)
+  @include media(mobile) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ✅ 내부 요소 크기 반응형
+  .youtube {
+    @include fluid-width(32, 48);
+    @include fluid-height(32, 48);
+  }
+}
+
+
+  */
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+}
+@media (max-width: 768px) {
+  .web {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .mob {
+    display: block !important;
+  }
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+.portfolio__list {
+  position: relative;
+}
+.portfolio__list .project {
+  position: absolute;
+  padding: 0 1.6rem;
+}
+.portfolio__list .project a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.portfolio__list .project a .title {
+  padding-bottom: 2rem;
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+.portfolio__list .project a .summary {
+  position: relative;
+  width: 56rem;
+  height: 56rem;
+}
+.portfolio__list .project a .summary .box {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 1.6rem 3.2rem;
+  opacity: 0;
+  -webkit-transition: opacity 0.6s;
+  transition: opacity 0.6s;
+}
+.portfolio__list .project a .summary .box .dim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+}
+.portfolio__list .project a .summary .box .txt {
+  z-index: 2;
+  position: relative;
+  line-height: 3.6rem;
+  color: #171717;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+.portfolio__list .project a .summary .image {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.portfolio__list .project a:hover .summary .box {
+  opacity: 1;
+}
+.portfolio__list .project__s {
+  padding-top: 12.8rem;
+}
+.portfolio__list .project__s a .summary {
+  height: 33.6rem;
+}
+.portfolio__list .project__s a .summary .image {
+  height: 33.6rem;
+}
+.portfolio__list .project:nth-child(n+4) {
+  padding-top: 6.4rem;
+}

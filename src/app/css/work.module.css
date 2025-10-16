@@ -1,0 +1,534 @@
+@charset "UTF-8";
+/* -------------------------------------------------- VARIABLES -------------------------------------------------- */
+/* line height */
+/* color */
+/* fontsize */
+/* gradation */
+/*
+  * ========================================================
+  * Responsive Utilities with clamp() - SCSS Mixins
+  * 기준: 1rem = 10px (html { font-size: 62.5% })
+  * ========================================================
+
+  * 기본값 커스터마이징 가능
+  */
+/*
+  * 공통 clamp mixin (단위: rem + vw)
+  */
+/*
+  * --------------------------------------------------------
+  * 속성별 반응형 mixin
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 브레이크포인트 유틸
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 속성 작성 예시
+  * --------------------------------------------------------
+
+  .title {
+    @include fluid-font-size(16, 24);
+    @include fluid-line-height(22, 32);
+    @include fluid-margin(10, 30);
+  }
+
+  .card {
+    @include fluid-padding(20, 60);
+    @include fluid-radius(8, 20);
+    @include fluid-gap(12, 40);
+  }
+
+  .footer {
+  display: flex;
+  padding: 0;
+  @include fluid-padding(16, 32);
+
+  ✅ 레이아웃 변경 (mobile에서 column으로)
+  @include media(mobile) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ✅ 내부 요소 크기 반응형
+  .youtube {
+    @include fluid-width(32, 48);
+    @include fluid-height(32, 48);
+  }
+}
+
+
+  */
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+}
+@media (max-width: 768px) {
+  .web {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .mob {
+    display: block !important;
+  }
+}
+
+/* CLASS */
+.inner {
+  padding-left: 17.6rem;
+  padding-right: 17.6rem;
+}
+
+.container {
+  position: relative;
+  padding-top: 32rem;
+}
+.container .contents {
+  position: relative;
+  padding-bottom: 19.2rem;
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+/* visual */
+.visual__title {
+  padding: 0 17.6rem;
+  line-height: 8rem;
+  color: #171717;
+  font-size: 6.4rem;
+  font-weight: 500;
+  font-family: var(--font-anek-latin);
+}
+.visual__image {
+  position: relative;
+  margin-top: 3.2rem;
+  height: 51.2rem;
+}
+
+/* description */
+.description {
+  margin-top: 4.8rem;
+}
+.description .summary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.description .summary .large,
+.description .summary .small {
+  width: 50%;
+}
+.description .summary .large {
+  line-height: 8rem;
+  font-size: 6.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+}
+.description .summary .small {
+  line-height: 4.8rem;
+  font-size: 2.8rem;
+  font-weight: 300;
+  letter-spacing: -0.02rem;
+  -webkit-transition-duration: 1.2s;
+          transition-duration: 1.2s;
+}
+.description .departments {
+  margin-top: 19.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.description .departments .dept {
+  margin: 0 1.6rem;
+  width: calc(25% - 3.4rem);
+  background-color: #ffffff;
+  border: 0.1rem solid #e8e8e8;
+  border-radius: 1.2rem;
+}
+.description .departments .dept__box {
+  padding: 3.6rem 3.2rem 4.8rem;
+}
+.description .departments .dept__box .image {
+  position: relative;
+  width: 12.8rem;
+  height: 12.8rem;
+}
+.description .departments .dept__box .text {
+  margin-top: 3.2rem;
+}
+.description .departments .dept__box .text p {
+  line-height: 4.8rem;
+  font-size: 4rem;
+  font-family: var(--font-anek-latin);
+  font-weight: 500;
+}
+.description .departments .dept__box .text span {
+  display: block;
+  margin-top: 2rem;
+  line-height: 3.2rem;
+  min-height: 9.6rem;
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: -0.02rem;
+}
+.description .departments .dept__box .text ul {
+  margin-top: 3.2rem;
+}
+.description .departments .dept__box .text ul li {
+  line-height: 3.2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.02rem;
+}
+.description .departments .dept__box .text div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 3.2rem;
+}
+.description .departments .dept__box .text div a {
+  margin-right: 2.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.description .departments .dept__box .text div a:last-child {
+  position: relative;
+  padding-right: 2.4rem;
+}
+.description .departments .dept__box .text div a:last-child::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-image: url("/images/work/arrow.png");
+}
+.description .departments .dept__campaign {
+  margin-bottom: 4.8rem;
+  width: 100%;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+}
+.description .departments .dept__campaign .dept__box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.description .departments .dept__campaign .dept__box .image {
+  margin-left: 12.8rem;
+}
+.description .departments .dept__campaign .dept__box .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 0;
+  margin-left: 3.2rem;
+}
+.description .departments .dept__campaign .dept__box .text p {
+  width: 100%;
+}
+.description .departments .dept__campaign .dept__box .text span {
+  width: 44%;
+  min-height: auto;
+}
+.description .departments .dept__campaign .dept__box .text ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 2rem;
+  width: 40%;
+}
+.description .departments .dept__campaign .dept__box .text ul li {
+  width: 50%;
+}
+.description .departments .dept__campaign .dept__box .text div {
+  width: 100%;
+}
+.description .departments .dept__social {
+  -webkit-transition-duration: 1.2s;
+          transition-duration: 1.2s;
+}
+.description .departments .dept__performance {
+  -webkit-transition-duration: 1.8s;
+          transition-duration: 1.8s;
+}
+.description .departments .dept__creative {
+  -webkit-transition-duration: 2.4s;
+          transition-duration: 2.4s;
+}
+.description .departments .dept__web {
+  -webkit-transition-duration: 3s;
+          transition-duration: 3s;
+}
+
+/* award */
+.award {
+  margin-top: 12.8rem;
+  padding: 11.2rem 0 17.6rem;
+  color: #ffffff;
+  background-color: #171717;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+}
+.award__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.award__list > div {
+  width: 76.8rem;
+}
+.award__list .winning {
+  display: inline-block;
+  position: relative;
+  line-height: 6.4rem;
+  font-size: 4.8rem;
+  font-family: var(--font-alexandria);
+  font-weight: 500;
+  letter-spacing: -0.02rem;
+}
+.award__list .winning span {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 0.8rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  color: #171717;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+.award__list .summary {
+  margin-top: 1.6rem;
+  border-top: 1px solid #464646;
+}
+.award__list .summary a {
+  position: relative;
+  padding: 1.6rem 0;
+  line-height: 3.2rem;
+  font-size: 1.8rem;
+  font-weight: 300;
+  border-bottom: 1px solid #464646;
+  cursor: default;
+}
+.award__list .summary a span {
+  display: none;
+  position: absolute;
+  top: 2.6rem;
+  left: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  background-color: #f00;
+  border-radius: 0.4rem;
+}
+.award__list .summary a.medal {
+  padding-left: 2.4rem;
+  cursor: pointer;
+}
+.award__list .summary a.medal span {
+  display: block;
+}
+.award__social {
+  -webkit-transition-duration: 1.2s;
+          transition-duration: 1.2s;
+}
+.award__web {
+  -webkit-transition-duration: 1.8s;
+          transition-duration: 1.8s;
+}
+
+/* team */
+.team {
+  margin-top: 19.2rem;
+}
+.team__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.team__title .large,
+.team__title .small {
+  letter-spacing: -0.02rem;
+}
+.team__title .large {
+  width: 44%;
+  line-height: 8rem;
+  font-size: 6.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 600;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+}
+.team__title .small {
+  width: 56%;
+  -webkit-transition-duration: 1.2s;
+          transition-duration: 1.2s;
+}
+.team__title .small p {
+  line-height: 4.8rem;
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+.team__title .small span {
+  display: block;
+  margin-top: 1.6rem;
+  line-height: 3.6rem;
+  font-size: 2.4rem;
+  font-weight: 300;
+}
+.team__comprise {
+  position: relative;
+  -webkit-transition-duration: 1.8s;
+          transition-duration: 1.8s;
+}
+.team__comprise::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12.8rem;
+  bottom: 17.6rem;
+  width: 0.2rem;
+  background-color: #e3e3e3;
+}
+.team__comprise .comprise.hr {
+  position: relative;
+  margin-top: 2.4rem;
+  padding-left: 32.8rem;
+}
+.team__comprise .comprise.hr::before {
+  content: "";
+  position: absolute;
+  bottom: -3.6rem;
+  left: 12.8rem;
+  width: 32.8rem;
+  height: 0.2rem;
+  background-color: #e3e3e3;
+}
+.team__comprise .comprise.hr .dept {
+  position: relative;
+}
+.team__comprise .comprise.hr .dept::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-top: 0.2rem;
+  width: 0.2rem;
+  height: 3.6rem;
+  background-color: #e3e3e3;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.team__comprise .comprise .dept {
+  z-index: 1;
+  position: relative;
+  width: 25.2rem;
+  height: 5.2rem;
+  line-height: 5.2rem;
+  font-size: 1.6rem;
+  font-family: var(--font-alexandria);
+  font-weight: 600;
+  text-align: center;
+  background-color: #ffffff;
+  border: 0.2rem solid #171717;
+  border-radius: 3.2rem;
+}
+.team__comprise .comprise .list {
+  margin-top: 2.4rem;
+  padding-left: 3.6rem;
+}
+.team__comprise .comprise .list span {
+  display: block;
+  line-height: 3.2rem;
+  font-size: 2rem;
+  font-family: var(--font-alexandria);
+  font-weight: 300;
+  letter-spacing: -0.02rem;
+}
+.team__comprise .comprise_main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  position: relative;
+  margin-top: 7.2rem;
+}
+.team__comprise .comprise_main::before {
+  content: "";
+  position: absolute;
+  top: 2.8rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 0.2rem;
+  background-color: #e3e3e3;
+}

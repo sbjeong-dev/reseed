@@ -1,0 +1,192 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/responsive" as *;
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+/* WEB */
+.web {
+  display: block !important;
+
+  @include media(mobile) {
+    display: none !important;
+  }
+}
+
+/* MOB */
+.mob {
+  display: none !important;
+
+  @include media(mobile) {
+    display: block !important;
+  }
+}
+
+/* COMMON */
+.wrap {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+
+  .title {
+    padding: 15.2rem 17.6rem 7.2rem;
+
+    p,
+    span {
+      color: $color17;
+      transition: font-size 0.4s, line-height 0.4s, opacity 0.6s;
+    }
+
+    p {
+      line-height: $lineHeight80;
+      font-size: $fontSize64;
+      font-family: var(--font-alexandria);
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+
+    span {
+      display: block;
+      line-height: $lineHeight48;
+      font-size: $fontSize28;
+      font-family: var(--font-noto-sans);
+      font-weight: 300;
+    }
+  }
+
+  .content {
+    padding: 0 17.6rem 19.2rem;
+
+    .more {
+      display: inline-flex;
+      position: relative;
+      left: 50%;
+      margin-top: 9.6rem;
+      transition: margin-top 0.4s;
+      transform: translateX(-50%);
+
+      span {
+        position: relative;
+        display: inline-block;
+        color: $color17;
+        font-size: $fontSize18;
+        font-family: var(--font-noto-sans);
+        font-weight: 400;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -0.2rem;
+          left: 0;
+          right: 0;
+          height: 0.1rem;
+          background-color: $color17;
+          opacity: 0;
+          transition: opacity 0.4s;
+        }
+      }
+
+      &:hover {
+        span {
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  @include media(mobile) {
+    .title {
+      padding: 6.4rem 0.8rem 2.4rem;
+
+      p {
+        line-height: $lineHeight40;
+        font-size: $fontSize32;
+      }
+
+      span {
+        line-height: $lineHeight24;
+        font-size: $fontSize14;
+      }
+    }
+
+    .content {
+      padding: 0 0.8rem 7.2rem;
+
+      .more {
+        margin-top: 4.8rem;
+
+        span {
+          line-height: $lineHeight24;
+          color: $color75;
+          font-size: $fontSize14;
+
+          &::before {
+            background-color: $color75;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+.visual {
+  overflow: hidden;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0 !important;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dimmed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.4s;
+
+    &.is_dimmed {
+      opacity: 1;
+    }
+  }
+}
+
+.contents {
+  z-index: 2;
+  position: relative;
+  margin-top: 100vh;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: $colorFF;
+
+  .portfolio {
+    .content {
+      position: relative;
+      padding: 0;
+      height: 100%;
+    }
+  }
+}

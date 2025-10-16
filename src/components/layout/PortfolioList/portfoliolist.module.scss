@@ -1,0 +1,113 @@
+@use "../../../styles/abstracts/variables" as *;
+@use "../../../styles/abstracts/responsive" as *;
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+
+  @include media(mobile) {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+
+  @include media(mobile) {
+    display: block !important;
+  }
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+.portfolio__list {
+  position: relative;
+
+  .project {
+    position: absolute;
+    padding: 0 1.6rem;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      .title {
+        padding-bottom: 2rem;
+        line-height: $lineHeight24;
+        font-size: $fontSize16;
+        font-weight: 300;
+      }
+
+      .summary {
+        position: relative;
+        width: 56rem;
+        height: 56rem;
+
+        .box {
+          z-index: 1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          padding: 1.6rem 3.2rem;
+          opacity: 0;
+          transition: opacity 0.6s;
+
+          .dim {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: $gradient3;
+          }
+
+          .txt {
+            z-index: 2;
+            position: relative;
+            line-height: $lineHeight36;
+            color: $color17;
+            font-size: $fontSize24;
+            font-weight: 700;
+          }
+        }
+
+        .image {
+          object-fit: cover;
+        }
+      }
+
+      &:hover {
+        .summary {
+          .box {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &__s {
+      padding-top: 12.8rem;
+
+      a {
+        .summary {
+          height: 33.6rem;
+
+          .image {
+            height: 33.6rem;
+          }
+        }
+      }
+    }
+
+    &:nth-child(n + 4) {
+      padding-top: 6.4rem;
+    }
+  }
+}

@@ -1,0 +1,438 @@
+@charset "UTF-8";
+/* -------------------------------------------------- VARIABLES -------------------------------------------------- */
+/* line height */
+/* color */
+/* fontsize */
+/* gradation */
+/*
+  * ========================================================
+  * Responsive Utilities with clamp() - SCSS Mixins
+  * 기준: 1rem = 10px (html { font-size: 62.5% })
+  * ========================================================
+
+  * 기본값 커스터마이징 가능
+  */
+/*
+  * 공통 clamp mixin (단위: rem + vw)
+  */
+/*
+  * --------------------------------------------------------
+  * 속성별 반응형 mixin
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 브레이크포인트 유틸
+  * --------------------------------------------------------
+  */
+/*
+  * --------------------------------------------------------
+  * 속성 작성 예시
+  * --------------------------------------------------------
+
+  .title {
+    @include fluid-font-size(16, 24);
+    @include fluid-line-height(22, 32);
+    @include fluid-margin(10, 30);
+  }
+
+  .card {
+    @include fluid-padding(20, 60);
+    @include fluid-radius(8, 20);
+    @include fluid-gap(12, 40);
+  }
+
+  .footer {
+  display: flex;
+  padding: 0;
+  @include fluid-padding(16, 32);
+
+  ✅ 레이아웃 변경 (mobile에서 column으로)
+  @include media(mobile) {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ✅ 내부 요소 크기 반응형
+  .youtube {
+    @include fluid-width(32, 48);
+    @include fluid-height(32, 48);
+  }
+}
+
+
+  */
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+}
+@media (max-width: 768px) {
+  .web {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .mob {
+    display: block !important;
+  }
+}
+
+/* CLASS */
+.inner {
+  padding-left: 17.6rem;
+  padding-right: 17.6rem;
+}
+
+.container {
+  position: relative;
+  padding-top: 32rem;
+}
+.container .contents {
+  position: relative;
+  padding-bottom: 19.2rem;
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+/* visual */
+.visual_tit {
+  padding: 0 17.6rem;
+  line-height: 8rem;
+  color: #171717;
+  font-size: 6.4rem;
+  font-weight: 500;
+  font-family: var(--font-anek-latin);
+}
+.visual_img {
+  position: relative;
+  margin-top: 3.2rem;
+  height: 51.2rem;
+}
+
+/* description */
+.description {
+  margin-top: 4.8rem;
+}
+.description .summary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.description .summary .large,
+.description .summary .small {
+  width: 50%;
+}
+.description .summary .large {
+  line-height: 8rem;
+  font-size: 6.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+}
+.description .summary .small {
+  line-height: 4.8rem;
+  font-size: 2.8rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  -webkit-transition-duration: 1.2s;
+          transition-duration: 1.2s;
+}
+.description .brochure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 8rem;
+}
+.description .brochure a {
+  display: block;
+  width: 21rem;
+  height: 4.8rem;
+  line-height: 4.8rem;
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-family: var(--font-alexandria);
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #171717;
+  border: 0.2rem solid #171717;
+  border-radius: 0.8rem;
+  -webkit-transition: color 0.6s, background-color 0.6s;
+  transition: color 0.6s, background-color 0.6s;
+}
+.description .brochure a:hover {
+  color: #171717;
+  background-color: #ffffff;
+}
+
+/* form */
+.form {
+  margin-top: 19.2rem;
+  padding: 11.2rem 0 17.6rem;
+  background-color: #f5f5f5;
+}
+.form .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.form .subject {
+  margin-bottom: 4.8rem;
+  width: 50%;
+  line-height: 8rem;
+  font-size: 6.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.form_box {
+  width: 50%;
+}
+.form_box .text {
+  margin-bottom: 5.6rem;
+  line-height: 4.8rem;
+  font-size: 3.2rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.form_box .input {
+  margin-top: 3.2rem;
+  width: 60rem;
+}
+.form_box .input p {
+  display: inline-block;
+  position: relative;
+  line-height: 4.8rem;
+  font-size: 1.6rem;
+}
+.form_box .input p::after {
+  content: "";
+  position: absolute;
+  top: 1.8rem;
+  left: 100%;
+  margin-left: 0.2rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: #171717;
+  border-radius: 50%;
+}
+.form_box .input input[type=text] {
+  padding: 0 1.6rem;
+  width: 100%;
+  height: 4.8rem;
+  line-height: 4.8rem;
+  font-size: 1.4rem;
+  background-color: #ffffff;
+  border: 0.1rem solid #e8e8e8;
+  border-radius: 0.8rem;
+  -webkit-transition: border-color 0.6s;
+  transition: border-color 0.6s;
+}
+.form_box .input input:focus {
+  outline: none;
+  border-color: #171717;
+}
+.form_box .input .service {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 1.6rem;
+}
+.form_box .input .service label {
+  display: block;
+}
+.form_box .input .service label:not(:first-child) {
+  margin-left: 1.6rem;
+}
+.form_box .input .service label span {
+  display: block;
+  position: relative;
+  padding-left: 3.2rem;
+  line-height: 2.4rem;
+  font-size: 1.8rem;
+}
+.form_box .input .service label span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-image: url(../../../public/images/request/check_off.png);
+  -webkit-transition: background-image 0.6s;
+  transition: background-image 0.6s;
+}
+.form_box .input .service label input:checked + span::before {
+  background-image: url(../../../public/images/request/check_on.png);
+}
+.form_box .input.textarea textarea {
+  padding: 1.4rem 1.6rem;
+  width: 100%;
+  height: 14.4rem;
+  font-size: 1.4rem;
+  background-color: #ffffff;
+  border: 0.1rem solid #e8e8e8;
+  border-radius: 0.8rem;
+  -webkit-transition: border-color 0.6s;
+  transition: border-color 0.6s;
+}
+.form_box .input.textarea textarea:focus {
+  outline: none;
+  border-color: #171717;
+}
+.form_box .input.file .upload {
+  position: relative;
+  margin-bottom: 8px;
+  width: 100%;
+  height: 48px;
+}
+.form_box .input.file .upload_file {
+  display: none;
+}
+.form_box .input.file .upload_text {
+  padding: 0 2rem 0 4rem;
+  width: 100%;
+  height: 100%;
+  color: #909090;
+}
+.form_box .input.file .upload label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 2rem;
+}
+.form_box .input.file .upload label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-image: url(../../../public/images/request/file.png);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.form_box .input.file .upload label span {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  padding: 0 0.8rem;
+  line-height: 2.4rem;
+  color: #171717;
+  font-size: 1.2rem;
+  background-color: #e3e3e3;
+  border-radius: 0.4rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.form_box .input.agree {
+  margin-top: 4.8rem;
+}
+.form_box .input.agree label {
+  display: block;
+}
+.form_box .input.agree label span {
+  display: block;
+  position: relative;
+  padding-left: 3.2rem;
+}
+.form_box .input.agree label span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-image: url(../../../public/images/request/check_off.png);
+  -webkit-transition: background-image 0.6s;
+  transition: background-image 0.6s;
+}
+.form_box .input.agree label input:checked + span::before {
+  background-image: url(../../../public/images/request/check_on.png);
+}
+.form_box .input.agree button {
+  display: block;
+  margin-top: 2rem;
+  width: 10.6rem;
+  height: 4.8rem;
+  line-height: 4.8rem;
+  color: #ffffff;
+  font-size: 1.6rem;
+  background-color: #909090;
+  border-radius: 0.8rem;
+  -webkit-transition: background-color 0.6s;
+  transition: background-color 0.6s;
+}
+.form_box .input.agree button:hover {
+  background-color: #171717;
+}
+
+/* location */
+.location {
+  margin-top: 12.8rem;
+}
+.location__txt .subject {
+  line-height: 8rem;
+  font-size: 6.4rem;
+  font-family: var(--font-alexandria);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.location__txt .large,
+.location__txt .small {
+  line-height: 3.2rem;
+  letter-spacing: -0.02em;
+}
+.location__txt .large {
+  margin-top: 3.6rem;
+  font-size: 2.8rem;
+  font-family: var(--font-alexandria);
+  font-weight: 400;
+}
+.location__txt .small {
+  margin-top: 1.6rem;
+  font-size: 2rem;
+  font-weight: 300;
+}
+.location__txt span {
+  display: block;
+}
+.location__map {
+  margin-top: 4rem;
+  height: 52.8rem;
+  background-color: #f5f5f5;
+}
+.location__map .map {
+  width: 100%;
+  height: 100%;
+}

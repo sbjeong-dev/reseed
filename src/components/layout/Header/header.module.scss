@@ -1,0 +1,309 @@
+@use "@/styles/abstracts/variables" as *;
+@use "@/styles/abstracts/responsive" as *;
+/*
+  * FONT
+  * 1. Alexandria : var(--font-alexandria)
+  * 2. Anek Latin : var(--font-anek-latin)
+  * 3. Noto Sans CJK KR : var(--font-noto-sans)
+  */
+/* -------------------------------------------------- CLASS -------------------------------------------------- */
+.web {
+  display: block !important;
+
+  @include media(mobile) {
+    display: none !important;
+  }
+}
+
+.mob {
+  display: none !important;
+
+  @include media(mobile) {
+    display: block !important;
+  }
+}
+
+/* -------------------------------------------------- STYLES -------------------------------------------------- */
+.header {
+  overflow-x: hidden;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: transparent;
+  transition: background-color 0.4s;
+
+  &:hover,
+  &.is_scroll {
+    background-color: $colorFF;
+  }
+
+  &__area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.8rem 1.6rem;
+
+    .logo {
+      z-index: 12;
+      position: relative;
+      width: 7.2rem;
+      text-indent: -9999px;
+      background: url(../../../../public/images/logo_en.png) no-repeat center/100%;
+    }
+
+    .gnb {
+      &__menu {
+        z-index: 12;
+        position: relative;
+        width: 2.4rem;
+        height: 2.4rem;
+        text-indent: -9999px;
+        background: url(../../../../public/icons/gnb_menu.png) no-repeat center/100%;
+
+        &.is_open {
+          background: url(../../../../public/icons/gnb_close.png) no-repeat center/100%;
+        }
+      }
+
+      &__list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        a {
+          margin: 0 2.4rem;
+          font-family: var(--font-alexandria);
+          font-weight: 400;
+          text-transform: uppercase;
+
+          span {
+            position: relative;
+            padding-bottom: 0.4rem;
+            color: $color17;
+
+            &::before {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              height: 0.2rem;
+              background-color: $color46;
+              opacity: 0;
+              transition: opacity 0.4s;
+            }
+          }
+
+          &:hover {
+            span {
+              &::before {
+                opacity: 1;
+              }
+            }
+          }
+
+          &.request {
+            margin-right: 0;
+
+            span {
+              padding-right: 2rem;
+
+              &::before {
+                content: none;
+              }
+
+              &::after {
+                content: "";
+                position: absolute;
+                top: -0.6rem;
+                left: auto;
+                right: 0;
+                width: 1.8rem;
+                height: 1.8rem;
+                background: url(../../../../public/icons/gnb_request.png) no-repeat center/100%;
+                transition: background 0.4s;
+              }
+            }
+
+            &:hover {
+              span {
+                &::after {
+                  background: url(../../../../public/icons/gnb_request_hover.png) no-repeat center/100%;
+                }
+              }
+            }
+          }
+
+          &.active {
+            span {
+              &::before {
+                opacity: 1;
+              }
+            }
+
+            &.request {
+              span {
+                &::after {
+                  background: url(../../../../public/icons/gnb_request_hover.png) no-repeat center/100%;
+                }
+              }
+            }
+          }
+        }
+
+        &.is_open {
+          z-index: 8;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          padding: 0 0.8rem;
+          padding-bottom: 6.4rem;
+          background-color: $colorFF;
+
+          a {
+            margin: 0.8rem 0;
+            min-height: 4.8rem;
+
+            span {
+              padding: 0;
+              line-height: 4.8rem;
+              font-size: 4rem;
+              transition: color 0.4s;
+
+              &::before {
+                content: none;
+              }
+            }
+
+            &:hover {
+              span {
+                line-height: 4rem;
+                font-size: 4.8rem;
+                color: $colorBC;
+                font-family: var(--font-anek-latin);
+                text-transform: lowercase;
+              }
+            }
+
+            &.request {
+              span {
+                padding-right: 3.2rem;
+
+                &::after {
+                  top: 0;
+                  width: 2.6rem;
+                  height: 2.6rem;
+                  background-image: url(../../../../public/icons/mob/gnb_request.png);
+                }
+              }
+
+              &:hover {
+                span {
+                  &::after {
+                    background-image: url(../../../../public/icons/mob/gnb_request_hover.png);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &__info {
+        z-index: 8;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2.4rem 0.8rem;
+
+        p,
+        a {
+          line-height: $lineHeight16;
+          font-size: $fontSize8;
+          font-family: var(--font-alexandria), var(--font-noto-sans);
+          text-align: left;
+        }
+
+        .mail {
+          text-transform: uppercase;
+        }
+
+        .youtube {
+          display: block;
+          position: absolute;
+          bottom: 2.4rem;
+          right: 0.8rem;
+          width: 3.2rem;
+          height: 3.2rem;
+          text-indent: -9999px;
+          background-image: url(../../../../public/icons/mob/footer_youtube.png);
+          background-size: 100%;
+          transition: background-image 0.4s;
+
+          &:hover {
+            background-image: url(../../../../public/icons/mob/footer_youtube_hover.png);
+          }
+        }
+
+        .util {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          align-items: center;
+
+          .mail {
+            position: relative;
+            margin-right: 0.8rem;
+            padding-right: 0.8rem;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: 0;
+              width: 0.1rem;
+              height: 0.8rem;
+              background-color: $color17;
+              transform: translateY(-50%);
+            }
+          }
+
+          .policy {
+            display: block;
+            position: relative;
+            margin-left: 0.8rem;
+            padding-left: 0.8rem;
+            font-weight: 700;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 0;
+              width: 0.1rem;
+              height: 0.8rem;
+              background-color: $color17;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include media(mobile) {
+    &__area {
+      padding: 0.4rem 0.8rem;
+      padding-right: 1.6rem;
+    }
+  }
+}
